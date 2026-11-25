@@ -1,0 +1,293 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Legenda que Vende — 30 modelos para lojinhas que vendem por mensagem direta.</title>
+<meta name="description" content="A peça é boa, a foto está ótima, e a legenda fica parada na hora de publicar. Isso custa tempo toda semana. Legenda que Vende é um material de Writing & Publishing para lojinhas brasileiras que vendem por Instagram e WhatsApp. Ele entrega 30 modelos prontos, organizados por situação, com abertura, detalhe e chamada para o direct. Dentro: 6 situações (novidade, preço, frete, últimos exemplares reais, bastidores e pergunta), 30 legendas com regras curtas de uso, um gerador que abre no navegador e um checklist antes de publicar. O gerador usa os dados que você informa: peça, detalhe e preço. Ele troca esses campos nos modelos e devolve a legenda pronta para copiar. Sem IA paga, sem prompt e sem assinatura.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>/* Padrão visual lojinha-direct — pages de venda premium, sem dependências. */
+:root {
+  --paper: #f1f2ee;
+  --paper-2: #e6e9e2;
+  --surface: #fbfcf8;
+  --ink: #17201c;
+  --muted: #5c665f;
+  --accent: #274bb8;
+  --accent-dark: #1b367f;
+  --focus: #17201c;
+  --good: #1f5a4f;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 18px/1.6 "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 600; line-height: 1.1; letter-spacing: -0.025em; margin: 0; }
+p { margin: 0 0 1rem; }
+a { color: inherit; }
+.wrap { width: min(1120px, calc(100% - 2.5rem)); margin-inline: auto; }
+.skip { position: absolute; left: -9999px; top: 0; background: var(--ink); color: var(--paper); padding: .7rem 1rem; z-index: 10; }
+.skip:focus { left: 1rem; top: 1rem; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+.topo { background: var(--paper-2); }
+.topo .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 76px; }
+.marca { font-family: "Fraunces", Georgia, serif; font-size: 1.2rem; font-weight: 700; text-decoration: none; }
+.marca em { color: var(--accent); font-style: normal; }
+.topo small { color: var(--muted); font-size: .86rem; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--accent); color: #fff; border: 0; border-radius: 2px;
+  padding: .9rem 1.55rem; font: 700 .98rem/1.2 "DM Sans", Arial, sans-serif;
+  text-decoration: none; transition: background .16s ease-out;
+}
+.btn:hover { background: var(--accent-dark); }
+.btn--claro { background: var(--paper); color: var(--ink); }
+.btn--claro:hover { background: var(--paper-2); }
+.btn--texto { background: transparent; color: var(--ink); padding-inline: 0; text-decoration: underline; text-underline-offset: 5px; }
+.btn--texto:hover { background: transparent; color: var(--accent-dark); }
+
+.hero { padding-block: clamp(3.5rem, 7vw, 6.5rem); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, .6fr); gap: clamp(2rem, 4vw, 3.5rem); align-items: start; }
+.contexto { font-size: 1rem; color: var(--muted); margin: 0 0 1.1rem; }
+.hero h1 { font-size: clamp(2.6rem, 6vw, 4.8rem); max-width: 24ch; margin-bottom: 1.4rem; }
+.hero h1 em { color: var(--accent); font-style: normal; }
+.lead { font-size: 1.12rem; color: var(--ink); max-width: 47ch; }
+.acoes { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.5rem; margin-top: 2rem; }
+.fatos { display: flex; flex-wrap: wrap; gap: .45rem 1.35rem; margin: 2.2rem 0 0; color: var(--muted); font-size: .92rem; }
+.fatos span::before { content: ""; display: inline-block; width: 7px; height: 7px; background: var(--accent); margin-right: .5rem; vertical-align: middle; }
+
+.cartao-resposta { background: var(--surface); border-left: 6px solid var(--accent); padding: clamp(1.5rem, 3vw, 2.25rem); }
+.cartao-resposta .rotulo { display: block; font-family: "Fraunces", Georgia, serif; font-size: 1.35rem; line-height: 1.2; margin-bottom: 1.5rem; }
+.msg { padding: 1rem 1.15rem; background: var(--paper-2); margin-bottom: .9rem; font-size: .98rem; }
+.msg--loja { background: #e7eee9; margin-left: 2rem; }
+.msg .quem { display: block; font-size: .82rem; color: var(--muted); margin-bottom: .35rem; }
+.nota { margin: 1.2rem 0 0; font-size: .95rem; color: var(--muted); }
+
+.section { padding-block: clamp(3.5rem, 7vw, 5.5rem); }
+.section--tint { background: var(--paper-2); }
+.section h2 { font-size: clamp(2.1rem, 4.5vw, 3.2rem); max-width: 22ch; margin-bottom: 1rem; }
+.intro { color: var(--ink); max-width: 62ch; margin-bottom: 2.2rem; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.bloco, .passo { background: var(--surface); border-left: 6px solid var(--accent); padding: clamp(1.4rem, 3vw, 2rem); }
+.bloco h3, .passo h3 { font-size: 1.45rem; margin-bottom: .5rem; }
+.bloco p, .bloco li, .passo p { color: var(--ink); font-size: 1rem; }
+.bloco ul, .bloco ol { margin: 1rem 0 0; padding-left: 1.15rem; }
+.bloco li { margin-bottom: .5rem; }
+.bloco li::marker { color: var(--accent); font-weight: 700; }
+.bloco--ruim { border-left-color: var(--muted); }
+.bloco--bom { border-left-color: var(--good); }
+.chat p { background: var(--paper); padding: .8rem 1rem; margin-bottom: .6rem; font-size: .94rem; }
+.chat small { display: block; margin-top: .3rem; font-size: .82rem; color: var(--muted); }
+.amostra { background: var(--paper); padding: .9rem 1rem; margin-top: 1rem; font-size: .95rem; color: var(--ink); }
+.amostra strong { display: block; color: var(--accent-dark); margin-bottom: .3rem; }
+.passos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+.passo p:last-child { margin-bottom: 0; }
+
+.badge { display: inline-block; background: var(--paper-2); color: var(--accent-dark); padding: .4rem .8rem; font-size: .9rem; margin-bottom: 1.2rem; }
+.demo-frame { background: var(--surface); border-left: 6px solid var(--accent); padding: 1rem; }
+.demo-frame .rotulo { display: block; font-family: "Fraunces", Georgia, serif; font-size: 1.15rem; margin-bottom: .8rem; }
+.demo-frame iframe { width: 100%; height: 760px; border: 0; display: block; background: var(--surface); }
+
+.preco { background: var(--ink); color: var(--paper); }
+.preco .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.preco h2 { color: var(--paper); }
+.preco p { color: #d8d2c6; max-width: 50ch; }
+.valores { display: flex; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0; }
+.valores .novo { font-family: "Fraunces", Georgia, serif; font-size: clamp(3rem, 7vw, 4.6rem); font-weight: 700; line-height: 1; color: var(--paper); }
+.valores .velho { font-size: 1.1rem; text-decoration: line-through; color: #b9c1bd; }
+.caixa-cta { background: var(--paper); color: var(--ink); padding: clamp(1.5rem, 3vw, 2rem); }
+.caixa-cta strong { display: block; font-family: "Fraunces", Georgia, serif; font-size: 1.4rem; line-height: 1.2; margin-bottom: .6rem; }
+.caixa-cta p { color: var(--ink); font-size: 1rem; }
+.caixa-cta .btn { width: 100%; }
+.caixa-cta small { display: block; margin-top: 1rem; color: var(--muted); font-size: .82rem; text-align: center; }
+
+.faq { max-width: 820px; }
+details { background: var(--surface); padding: 1rem 1.2rem; }
+details + details { margin-top: .6rem; }
+summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; color: var(--accent); font-weight: 700; }
+details[open] summary::after { content: "−"; }
+details p { color: var(--ink); margin: .8rem 0 0; font-size: 1rem; }
+
+.provas { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+.provas figure { margin: 0; background: var(--surface); padding: .8rem; }
+.provas img { display: block; width: 100%; height: auto; }
+.provas figcaption { color: var(--muted); font-size: .9rem; margin-top: .5rem; }
+
+.anuncio .wrap { width: min(860px, calc(100% - 2.5rem)); }
+.anuncio main { padding-block: clamp(3rem, 7vw, 5.5rem); }
+.anuncio h1 { font-size: clamp(2.6rem, 6vw, 4.5rem); margin-bottom: 1.2rem; }
+.anuncio .lead { max-width: 58ch; font-size: 1.15rem; }
+.anuncio .lead strong { display: block; font-family: "Fraunces", Georgia, serif; font-size: 1.25rem; color: var(--ink); }
+.anuncio .provas { margin: 2rem 0; }
+.anuncio .valores .novo { color: var(--accent-dark); }
+.anuncio .valores .velho { color: var(--muted); }
+.link-demo { display: block; background: var(--surface); border-left: 6px solid var(--accent); padding: 1.4rem; margin: 2.3rem 0; color: var(--ink); text-decoration: none; }
+.link-demo strong { display: block; font-family: "Fraunces", Georgia, serif; font-size: 1.35rem; margin-bottom: .35rem; }
+.link-demo small { color: var(--muted); }
+
+footer { background: var(--ink); color: #d8d2c6; padding-block: 2.5rem; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; align-items: center; font-size: .88rem; }
+footer a { text-decoration: underline; text-underline-offset: 4px; }
+footer a:hover { color: var(--paper); }
+
+@keyframes entrada {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.hero h1, .lead, .acoes, .fatos, .cartao-resposta, .demo-frame, .badge,
+.section h2, .intro, .bloco, .passo, .caixa-cta, .valores, details, .link-demo, .provas figure,
+.anuncio h1, .anuncio .lead, .anuncio .link-demo, .anuncio .btn {
+  animation: entrada .6s ease-out both;
+}
+.cartao-resposta, .demo-frame { animation-delay: .08s; }
+.acoes, .fatos { animation-delay: .12s; }
+.bloco:nth-child(2), .passo:nth-child(2) { animation-delay: .1s; }
+.bloco:nth-child(3), .passo:nth-child(3) { animation-delay: .18s; }
+.caixa-cta, details:nth-child(even) { animation-delay: .1s; }
+
+@media (max-width: 860px) {
+  .hero-grid, .grid-2, .passos, .preco .wrap, .provas { grid-template-columns: 1fr; }
+  .hero h1, .section h2 { max-width: none; }
+  .demo-frame iframe { height: 680px; }
+  .caixa-cta { max-width: 560px; }
+}
+@media (max-width: 520px) {
+  body { font-size: 16px; }
+  .wrap { width: calc(100% - 2.25rem); }
+  .topo small { display: none; }
+  .acoes .btn { width: 100%; }
+  .msg--loja { margin-left: 0; }
+  .demo-frame iframe { height: 640px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn { transition: none; }
+  .hero h1, .lead, .acoes, .fatos, .cartao-resposta, .demo-frame, .badge,
+  .section h2, .intro, .bloco, .passo, .caixa-cta, .valores, details, .link-demo, .provas figure,
+  .anuncio h1, .anuncio .lead, .anuncio .link-demo, .anuncio .btn {
+    animation: none;
+  }
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#conteudo">Pular para o conteúdo</a>
+
+<header class="topo"><div class="wrap">
+  <a class="marca" href="#inicio">Legenda que Vende</a>
+  <small>PDF + gerador HTML + modelos em JSON · pagamento único</small>
+</div></header>
+
+<main id="conteudo">
+  <section class="hero" id="inicio"><div class="wrap hero-grid">
+    <div>
+      <p class="contexto">30 modelos para lojinhas que vendem por mensagem direta.</p>
+      <h1>A peça é boa. A legenda trava.</h1>
+      <p class="lead">Escreva a legenda da sua loja em segundos. Escolha a situação, preencha a peça e o preço, e copie um texto pronto para postar. Sem IA paga e sem assinatura.</p>
+      <p class="badge">Versão pública</p>
+      <div class="acoes">
+        <a class="btn" href="https://gabrielnite.gumroad.com/l/legenda-que-vende-202611251958">Quero por R$ 29</a>
+        <a class="btn btn--texto" href="#oque">Ver o que está incluído</a>
+      </div>
+      <p class="fatos"><span>Acesso imediato</span><span>Sem mensalidade</span><span>Funciona offline</span></p>
+    </div>
+    <div class="demo-frame" aria-label="Demonstração do gerador de legendas">
+      <strong class="rotulo">Teste agora. O mesmo gerador do arquivo.</strong>
+      <iframe src="demo.html" title="Gerador de legendas com modelos prontos" loading="lazy"></iframe>
+    </div>
+  </div></section>
+
+  <section class="section section--tint" id="oque"><div class="wrap">
+    <h2>Texto pronto, com regra de uso.</h2>
+    <p class="intro">Cada modelo traz abertura, detalhe e chamada. Você troca os campos da sua loja e publica. As regras de quando usar e o que evitar vêm junto, para você não prometer o que não tem.</p>
+    <div class="grid-2">
+      <article class="bloco">
+        <h3>30 legendas em 6 situações</h3>
+        <p>Cada modelo traz abertura, detalhe, chamada para o direct e uma nota curta: quando usar e o que evitar. Nada de depoimento inventado ou escassez falsa.</p>
+        <ul>
+          <li>Novidade e destaque de peça.</li>
+          <li>Preço, frete e entrega.</li>
+          <li>Últimos exemplares reais, bastidores e pergunta.</li>
+        </ul>
+      </article>
+      <article class="bloco">
+        <h3>Gerador que abre no navegador</h3>
+        <p>Você preenche peça, detalhe e preço. O gerador troca esses campos nos 30 modelos e devolve a legenda para copiar.</p>
+        <ol>
+          <li>Escolha a situação da sua loja hoje.</li>
+          <li>Preencha os três campos com dados reais.</li>
+          <li>Copie, leia e publique. O envio é seu.</li>
+        </ol>
+      </article>
+    </div>
+  </div></section>
+
+  <section class="section" id="material"><div class="wrap">
+    <h2>Veja o material antes de comprar.</h2>
+    <p class="intro">Imagens dos arquivos reais que você recebe. Sem print de vendas e sem depoimento inventado.</p>
+    <div class="provas">
+      <figure><img src="capa.png" alt="Capa do material Legenda que Vende"><figcaption>Capa do material entregue.</figcaption></figure>
+      <figure><img src="thumb.png" alt="Miniatura quadrada do material"><figcaption>Miniatura para compartilhar.</figcaption></figure>
+      <figure><img src="gerador-tela.png" alt="Gerador de legendas aberto no navegador"><figcaption>Gerador aberto no navegador.</figcaption></figure>
+      <figure><img src="legenda-pronta.png" alt="Legenda preenchida com peça, detalhe e preço"><figcaption>Legenda gerada com os dados da loja.</figcaption></figure>
+    </div>
+  </div></section>
+
+  <section class="section" id="como"><div class="wrap">
+    <h2>Três passos. Sem pagar ferramenta.</h2>
+    <p class="intro">Abra o gerador no navegador, preencha peça, detalhe e preço, escolha a situação e copie. Funciona sem internet, sem conta e sem assinatura.</p>
+    <div class="passos"><article class="passo"><h3>Preencha os campos</h3><p>Peça, detalhe e preço. Use os dados reais da sua loja.</p></article>
+<article class="passo"><h3>Escolha a situação</h3><p>Novidade, preço, frete, últimos exemplares, bastidores ou pergunta. Cada grupo tem 5 modelos.</p></article>
+<article class="passo"><h3>Copie e confira</h3><p>Leia a legenda, ajuste prazo e estoque, e publique. Sem depoimento inventado e sem escassez falsa.</p></article></div>
+  </div></section>
+
+  <section class="section section--tint" id="exemplo"><div class="wrap">
+    <h2>Uma dúvida que chega todo dia.</h2>
+    <div class="grid-2">
+      <article class="bloco bloco--ruim"><h3>Na loja</h3><p>Oi, tem essa peça em outra cor?</p></article>
+      <article class="bloco bloco--bom"><h3>Legenda gerada</h3><p>Chegou: bolsa de tecido. Bolso fundo e alça ajustável. Preço R$ 89. Quer ver mais? Me chama no direct.</p></article>
+    </div>
+    <p class="intro" style="margin-top:1.5rem">Não é problema de produto. É problema de texto.</p>
+  </div></section>
+
+  <section class="section preco" id="preco"><div class="wrap">
+    <div>
+      <h2>Um pagamento. Sem mensalidade.</h2>
+      <p>30 legendas em 6 situações, gerador offline e regras de uso para postar no Instagram e no WhatsApp.</p>
+      <div class="valores"><span class="novo">R$ 29</span></div>
+      <p>A peça é boa, a foto está ótima, e a legenda fica parada na hora de publicar. Isso custa tempo toda semana. Legenda que Vende é um material de Writing & Publishing para lojinhas brasileiras que vendem por Instagram e WhatsApp. Ele entrega 30 modelos prontos, organizados por situação, com abertura, detalhe e chamada para o direct. Dentro: 6 situações (novidade, preço, frete, últimos exemplares reais, bastidores e pergunta), 30 legendas com regras curtas de uso, um gerador que abre no navegador e um checklist antes de publicar. O gerador usa os dados que você informa: peça, detalhe e preço. Ele troca esses campos nos modelos e devolve a legenda pronta para copiar. Sem IA paga, sem prompt e sem assinatura.</p>
+    </div>
+    <div class="caixa-cta">
+      <strong>Pare de escrever legenda do zero</strong>
+      <p>Abra o gerador, preencha três campos e copie a próxima legenda da sua loja.</p>
+      <a class="btn" href="https://gabrielnite.gumroad.com/l/legenda-que-vende-202611251958">Quero por R$ 29</a>
+      <small>Pagamento único · acesso imediato · sem assinatura</small>
+    </div>
+  </div></section>
+
+  <section class="section" id="faq"><div class="wrap">
+    <h2>Antes de comprar</h2>
+    <div class="faq"><details><summary>Isso não é o que qualquer IA faz?</summary><p>IA escreve texto genérico. Aqui você tem 30 modelos já organizados por situação de lojinha, com regras de quando usar e o que evitar. Você preenche seus dados e copia. Não precisa pedir para uma IA escrever.</p></details>
+<details><summary>Preciso instalar alguma coisa?</summary><p>Não. O gerador é um arquivo HTML que abre no navegador. Funciona sem internet, sem conta e sem assinatura.</p></details>
+<details><summary>Serve para WhatsApp também?</summary><p>Sim. As legendas são texto para copiar. Você escolhe onde publicar. O material não acessa sua conta nem automatiza posts.</p></details>
+<details><summary>Garante que vou vender mais?</summary><p>Não. O material organiza o texto da sua loja. Não promete venda, faturamento ou resultado.</p></details>
+<details><summary>Posso usar em qualquer nicho?</summary><p>Foi pensado para lojinhas brasileiras que vendem no direct. Moda, cosméticos, artesanato e doces são os exemplos usados.</p></details></div>
+  </div></section>
+</main>
+
+<footer><div class="wrap">
+  <span>© 2026 Gabriel Andrade · 30 modelos para lojinhas que vendem por mensagem direta..</span>
+  <a href="#inicio">Voltar ao topo</a>
+</div></footer>
+</body></html>
