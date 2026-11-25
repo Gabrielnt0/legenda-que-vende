@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Legenda que Vende · gerador</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+<style>/* Padrão visual lojinha-direct — pages de venda premium, sem dependências. */
+:root {
+  --paper: #f1f2ee;
+  --paper-2: #e6e9e2;
+  --surface: #fbfcf8;
+  --ink: #17201c;
+  --muted: #5c665f;
+  --accent: #274bb8;
+  --accent-dark: #1b367f;
+  --focus: #17201c;
+  --good: #1f5a4f;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font: 400 18px/1.6 "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 600; line-height: 1.1; letter-spacing: -0.025em; margin: 0; }
+p { margin: 0 0 1rem; }
+a { color: inherit; }
+.wrap { width: min(1120px, calc(100% - 2.5rem)); margin-inline: auto; }
+.skip { position: absolute; left: -9999px; top: 0; background: var(--ink); color: var(--paper); padding: .7rem 1rem; z-index: 10; }
+.skip:focus { left: 1rem; top: 1rem; }
+:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; }
+
+.topo { background: var(--paper-2); }
+.topo .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; min-height: 76px; }
+.marca { font-family: "Fraunces", Georgia, serif; font-size: 1.2rem; font-weight: 700; text-decoration: none; }
+.marca em { color: var(--accent); font-style: normal; }
+.topo small { color: var(--muted); font-size: .86rem; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--accent); color: #fff; border: 0; border-radius: 2px;
+  padding: .9rem 1.55rem; font: 700 .98rem/1.2 "DM Sans", Arial, sans-serif;
+  text-decoration: none; transition: background .16s ease-out;
+}
+.btn:hover { background: var(--accent-dark); }
+.btn--claro { background: var(--paper); color: var(--ink); }
+.btn--claro:hover { background: var(--paper-2); }
+.btn--texto { background: transparent; color: var(--ink); padding-inline: 0; text-decoration: underline; text-underline-offset: 5px; }
+.btn--texto:hover { background: transparent; color: var(--accent-dark); }
+
+.hero { padding-block: clamp(3.5rem, 7vw, 6.5rem); }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(320px, .6fr); gap: clamp(2rem, 4vw, 3.5rem); align-items: start; }
+.contexto { font-size: 1rem; color: var(--muted); margin: 0 0 1.1rem; }
+.hero h1 { font-size: clamp(2.6rem, 6vw, 4.8rem); max-width: 24ch; margin-bottom: 1.4rem; }
+.hero h1 em { color: var(--accent); font-style: normal; }
+.lead { font-size: 1.12rem; color: var(--ink); max-width: 47ch; }
+.acoes { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.5rem; margin-top: 2rem; }
+.fatos { display: flex; flex-wrap: wrap; gap: .45rem 1.35rem; margin: 2.2rem 0 0; color: var(--muted); font-size: .92rem; }
+.fatos span::before { content: ""; display: inline-block; width: 7px; height: 7px; background: var(--accent); margin-right: .5rem; vertical-align: middle; }
+
+.cartao-resposta { background: var(--surface); border-left: 6px solid var(--accent); padding: clamp(1.5rem, 3vw, 2.25rem); }
+.cartao-resposta .rotulo { display: block; font-family: "Fraunces", Georgia, serif; font-size: 1.35rem; line-height: 1.2; margin-bottom: 1.5rem; }
+.msg { padding: 1rem 1.15rem; background: var(--paper-2); margin-bottom: .9rem; font-size: .98rem; }
+.msg--loja { background: #e7eee9; margin-left: 2rem; }
+.msg .quem { display: block; font-size: .82rem; color: var(--muted); margin-bottom: .35rem; }
+.nota { margin: 1.2rem 0 0; font-size: .95rem; color: var(--muted); }
+
+.section { padding-block: clamp(3.5rem, 7vw, 5.5rem); }
+.section--tint { background: var(--paper-2); }
+.section h2 { font-size: clamp(2.1rem, 4.5vw, 3.2rem); max-width: 22ch; margin-bottom: 1rem; }
+.intro { color: var(--ink); max-width: 62ch; margin-bottom: 2.2rem; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.bloco, .passo { background: var(--surface); border-left: 6px solid var(--accent); padding: clamp(1.4rem, 3vw, 2rem); }
+.bloco h3, .passo h3 { font-size: 1.45rem; margin-bottom: .5rem; }
+.bloco p, .bloco li, .passo p { color: var(--ink); font-size: 1rem; }
+.bloco ul, .bloco ol { margin: 1rem 0 0; padding-left: 1.15rem; }
+.bloco li { margin-bottom: .5rem; }
+.bloco li::marker { color: var(--accent); font-weight: 700; }
+.bloco--ruim { border-left-color: var(--muted); }
+.bloco--bom { border-left-color: var(--good); }
+.chat p { background: var(--paper); padding: .8rem 1rem; margin-bottom: .6rem; font-size: .94rem; }
+.chat small { display: block; margin-top: .3rem; font-size: .82rem; color: var(--muted); }
+.amostra { background: var(--paper); padding: .9rem 1rem; margin-top: 1rem; font-size: .95rem; color: var(--ink); }
+.amostra strong { display: block; color: var(--accent-dark); margin-bottom: .3rem; }
+.passos { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 2rem; }
+.passo p:last-child { margin-bottom: 0; }
+
+.badge { display: inline-block; background: var(--paper-2); color: var(--accent-dark); padding: .4rem .8rem; font-size: .9rem; margin-bottom: 1.2rem; }
+.demo-frame { background: var(--surface); border-left: 6px solid var(--accent); padding: 1rem; }
+.demo-frame .rotulo { display: block; font-family: "Fraunces", Georgia, serif; font-size: 1.15rem; margin-bottom: .8rem; }
+.demo-frame iframe { width: 100%; height: 760px; border: 0; display: block; background: var(--surface); }
+
+.preco { background: var(--ink); color: var(--paper); }
+.preco .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: clamp(2rem, 5vw, 4rem); align-items: center; }
+.preco h2 { color: var(--paper); }
+.preco p { color: #d8d2c6; max-width: 50ch; }
+.valores { display: flex; align-items: baseline; flex-wrap: wrap; gap: 1rem; margin: 1.5rem 0; }
+.valores .novo { font-family: "Fraunces", Georgia, serif; font-size: clamp(3rem, 7vw, 4.6rem); font-weight: 700; line-height: 1; color: var(--paper); }
+.valores .velho { font-size: 1.1rem; text-decoration: line-through; color: #b9c1bd; }
+.caixa-cta { background: var(--paper); color: var(--ink); padding: clamp(1.5rem, 3vw, 2rem); }
+.caixa-cta strong { display: block; font-family: "Fraunces", Georgia, serif; font-size: 1.4rem; line-height: 1.2; margin-bottom: .6rem; }
+.caixa-cta p { color: var(--ink); font-size: 1rem; }
+.caixa-cta .btn { width: 100%; }
+.caixa-cta small { display: block; margin-top: 1rem; color: var(--muted); font-size: .82rem; text-align: center; }
+
+.faq { max-width: 820px; }
+details { background: var(--surface); padding: 1rem 1.2rem; }
+details + details { margin-top: .6rem; }
+summary { cursor: pointer; font-weight: 600; list-style: none; display: flex; justify-content: space-between; gap: 1rem; }
+summary::-webkit-details-marker { display: none; }
+summary::after { content: "+"; color: var(--accent); font-weight: 700; }
+details[open] summary::after { content: "−"; }
+details p { color: var(--ink); margin: .8rem 0 0; font-size: 1rem; }
+
+.provas { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.2rem; }
+.provas figure { margin: 0; background: var(--surface); padding: .8rem; }
+.provas img { display: block; width: 100%; height: auto; }
+.provas figcaption { color: var(--muted); font-size: .9rem; margin-top: .5rem; }
+
+.anuncio .wrap { width: min(860px, calc(100% - 2.5rem)); }
+.anuncio main { padding-block: clamp(3rem, 7vw, 5.5rem); }
+.anuncio h1 { font-size: clamp(2.6rem, 6vw, 4.5rem); margin-bottom: 1.2rem; }
+.anuncio .lead { max-width: 58ch; font-size: 1.15rem; }
+.anuncio .lead strong { display: block; font-family: "Fraunces", Georgia, serif; font-size: 1.25rem; color: var(--ink); }
+.anuncio .provas { margin: 2rem 0; }
+.anuncio .valores .novo { color: var(--accent-dark); }
+.anuncio .valores .velho { color: var(--muted); }
+.link-demo { display: block; background: var(--surface); border-left: 6px solid var(--accent); padding: 1.4rem; margin: 2.3rem 0; color: var(--ink); text-decoration: none; }
+.link-demo strong { display: block; font-family: "Fraunces", Georgia, serif; font-size: 1.35rem; margin-bottom: .35rem; }
+.link-demo small { color: var(--muted); }
+
+footer { background: var(--ink); color: #d8d2c6; padding-block: 2.5rem; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; align-items: center; font-size: .88rem; }
+footer a { text-decoration: underline; text-underline-offset: 4px; }
+footer a:hover { color: var(--paper); }
+
+@keyframes entrada {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.hero h1, .lead, .acoes, .fatos, .cartao-resposta, .demo-frame, .badge,
+.section h2, .intro, .bloco, .passo, .caixa-cta, .valores, details, .link-demo, .provas figure,
+.anuncio h1, .anuncio .lead, .anuncio .link-demo, .anuncio .btn {
+  animation: entrada .6s ease-out both;
+}
+.cartao-resposta, .demo-frame { animation-delay: .08s; }
+.acoes, .fatos { animation-delay: .12s; }
+.bloco:nth-child(2), .passo:nth-child(2) { animation-delay: .1s; }
+.bloco:nth-child(3), .passo:nth-child(3) { animation-delay: .18s; }
+.caixa-cta, details:nth-child(even) { animation-delay: .1s; }
+
+@media (max-width: 860px) {
+  .hero-grid, .grid-2, .passos, .preco .wrap, .provas { grid-template-columns: 1fr; }
+  .hero h1, .section h2 { max-width: none; }
+  .demo-frame iframe { height: 680px; }
+  .caixa-cta { max-width: 560px; }
+}
+@media (max-width: 520px) {
+  body { font-size: 16px; }
+  .wrap { width: calc(100% - 2.25rem); }
+  .topo small { display: none; }
+  .acoes .btn { width: 100%; }
+  .msg--loja { margin-left: 0; }
+  .demo-frame iframe { height: 640px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .btn { transition: none; }
+  .hero h1, .lead, .acoes, .fatos, .cartao-resposta, .demo-frame, .badge,
+  .section h2, .intro, .bloco, .passo, .caixa-cta, .valores, details, .link-demo, .provas figure,
+  .anuncio h1, .anuncio .lead, .anuncio .link-demo, .anuncio .btn {
+    animation: none;
+  }
+}
+
+.painel{background:var(--surface);border-left:6px solid var(--accent);padding:1.2rem;margin-bottom:1.5rem}
+.painel h2{font-size:1.6rem;margin-bottom:.9rem}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.9rem}
+label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:.35rem}
+input,select,textarea{width:100%;padding:.7rem .8rem;border:1px solid #d8d0c1;background:var(--surface);font:inherit;border-radius:2px}
+textarea{min-height:180px;resize:vertical}
+button{margin-top:1rem;background:var(--accent);color:#fff;border:0;padding:.75rem 1.2rem;font:700 .95rem 'DM Sans',Arial,sans-serif;border-radius:2px;cursor:pointer}
+button:hover{background:var(--accent-dark)}
+.saida{background:var(--paper-2);border-left:6px solid var(--accent);padding:.9rem 1rem;margin-top:1rem}
+.regras{font-size:.95rem;color:var(--ink);margin:.6rem 0 0}
+.regras strong{color:var(--accent-dark)}
+.contador{font-size:.85rem;color:var(--muted);margin:.5rem 0 0}
+.aviso{color:var(--muted);font-size:.9rem;margin-top:1.4rem}
+</style>
+</head>
+<body><div class="wrap">
+<p class="contexto">Ferramenta inclusa. Funciona offline.</p>
+<h1>Legenda que Vende</h1>
+<p class="lead">Preencha peça, detalhe e preço. Escolha a situação e copie a legenda pronta. Sem conta, sem IA paga e sem assinatura.</p>
+
+<div class="painel"><div class="grid">
+  <div><label for="peca">Peça</label><input id="peca" type="text" value="bolsa de tecido"></div>
+  <div><label for="detalhe">Detalhe</label><input id="detalhe" type="text" value="bolso fundo e alça ajustável"></div>
+  <div><label for="preco">Preço</label><input id="preco" type="text" value="R$ 89"></div>
+</div></div>
+
+<div class="painel"><div class="grid">
+  <div><label for="grupo">Situação</label><select id="grupo"></select></div>
+  <div><label for="modelo">Modelo</label><select id="modelo"></select></div>
+</div>
+  <p class="contador" id="contador"></p>
+</div>
+
+<div class="painel">
+  <h2>Legenda pronta para copiar</h2>
+  <textarea id="texto-legenda" readonly aria-label="Legenda gerada"></textarea>
+  <button type="button" id="copiar">Copiar legenda</button>
+  <p class="regras" id="regras"></p>
+</div>
+<p class="aviso">Confira estoque, preço e prazo antes de publicar. Se não tem poucas unidades, não use "últimos exemplares". Se não tem depoimento real, não invente um. A publicação continua sendo sua.</p>
+</div>
+
+<script>
+const DADOS = {"grupos": [{"id": "novidade", "nome": "Novidade", "legendas": [{"id": "nov-01", "abertura": "Chegou: {peca}.", "detalhe": "{detalhe}. Foto real, sem ajuste de cor.", "cta": "Preço {preco}. Quer ver mais? Me chama no direct.", "quando": "Peça nova que você tem para mostrar hoje.", "evitar": "Não diga exclusiva se pretende repor."}, {"id": "nov-02", "abertura": "Novidade na loja: {peca}.", "detalhe": "{detalhe}.", "cta": "Valor {preco}. Quer saber se tem disponível? Direct aberto.", "quando": "Lançamento simples, sem pressa de estoque.", "evitar": "Não use última unidade se você tem mais peças."}, {"id": "nov-03", "abertura": "Separei {peca} para mostrar aqui hoje.", "detalhe": "{detalhe}.", "cta": "Preço {preco}. Tira sua dúvida no direct.", "quando": "Você quer mostrar uma peça sem aparecer como anúncio.", "evitar": "Não prometa prazo de entrega antes de conferir."}, {"id": "nov-04", "abertura": "Essa é a {peca} que eu mostrei ontem.", "detalhe": "{detalhe}.", "cta": "Sai por {preco}. Quer reservar? Me chama.", "quando": "Retomar uma peça que apareceu em story.", "evitar": "Reserva só se você realmente consegue separar a peça."}, {"id": "nov-05", "abertura": "Destaque de hoje: {peca}.", "detalhe": "{detalhe}, com preço {preco}.", "cta": "Perguntas sobre medida ou cor? Direct.", "quando": "Post diário de uma peça específica.", "evitar": "Não use destaque se a peça não está disponível."}]}, {"id": "preco", "nome": "Preço", "legendas": [{"id": "pre-01", "abertura": "Quanto custa? Aqui está: {preco}.", "detalhe": "{peca}: {detalhe}.", "cta": "Se fizer sentido, me chama no direct.", "quando": "Você quer responder a pergunta mais comum antes dela chegar.", "evitar": "Não anuncie preço que você vai mudar no direct."}, {"id": "pre-02", "abertura": "Preço sem mistério: {preco}.", "detalhe": "{peca}, {detalhe}.", "cta": "Quer fechar? O direct está aberto.", "quando": "Peça com valor definido e estoque conferido.", "evitar": "Não omita taxa ou frete se eles mudam o total."}, {"id": "pre-03", "abertura": "{peca} sai por {preco}.", "detalhe": "{detalhe}.", "cta": "Quer que eu separe? Me chama.", "quando": "Chamada direta para uma peça que já tem foto.", "evitar": "Separe a peça só depois de combinar com a cliente."}, {"id": "pre-04", "abertura": "Você perguntou o valor da {peca}.", "detalhe": "É {preco}. {detalhe}.", "cta": "Direct para conferir disponibilidade.", "quando": "Depois de receber perguntas sobre preço nos stories.", "evitar": "Não use se o preço ainda depende de personalização."}, {"id": "pre-05", "abertura": "Preço atualizado da {peca}: {preco}.", "detalhe": "{detalhe}.", "cta": "Ajustou o orçamento? Me diz no direct.", "quando": "Quando você realmente revisou o preço da peça.", "evitar": "Não use 'atualizado' só para criar urgência."}]}, {"id": "frete", "nome": "Frete e entrega", "legendas": [{"id": "fre-01", "abertura": "Frete à parte: {peca} sai por {preco}.", "detalhe": "{peca}: {detalhe}.", "cta": "Quer calcular a entrega até sua cidade? Me chama.", "quando": "Quando você cobra o envio à parte.", "evitar": "Não prometa valor de frete sem consultar."}, {"id": "fre-02", "abertura": "Envio para todo o Brasil.", "detalhe": "{peca} por {preco}. {detalhe}.", "cta": "Prazo até a sua cidade: direct.", "quando": "Você realmente envia para todo o país.", "evitar": "Se só atende uma região, diga qual."}, {"id": "fre-03", "abertura": "Perguntaram se eu envio. Envio sim.", "detalhe": "{peca}: {preco}. {detalhe}.", "cta": "Cidade e prazo no direct.", "quando": "Dúvida recorrente sobre entrega.", "evitar": "Não responda prazo sem conferir o cálculo."}, {"id": "fre-04", "abertura": "{peca} com entrega.", "detalhe": "{detalhe}. Valor da peça: {preco}.", "cta": "O frete eu te digo no direct, conforme a cidade.", "quando": "Quando o frete varia muito por região.", "evitar": "Não coloque frete grátis se você não absorve o custo."}, {"id": "fre-05", "abertura": "Antes de comprar, confira a entrega.", "detalhe": "{peca} por {preco}. {detalhe}.", "cta": "Manda sua cidade no direct que eu respondo o prazo.", "quando": "Peças com prazo de produção ou envio variável.", "evitar": "Não use se você não vai responder rápido."}]}, {"id": "ultimos", "nome": "Últimos exemplares", "legendas": [{"id": "ult-01", "abertura": "Últimos exemplares de {peca}.", "detalhe": "{detalhe}. Preço {preco}.", "cta": "Se quiser, me chama no direct.", "quando": "O estoque realmente está acabando.", "evitar": "Não use se você vai repor a peça."}, {"id": "ult-02", "abertura": "Essa {peca} está terminando.", "detalhe": "{detalhe}. Sai por {preco}.", "cta": "Direct para conferir o que sobrou.", "quando": "Peça descontinuada ou sem reposição.", "evitar": "Não use se ainda vai entrar mais."}, {"id": "ult-03", "abertura": "Confira antes que acabe: {peca}.", "detalhe": "{detalhe}. Valor {preco}.", "cta": "Disponibilidade no direct.", "quando": "Você tem poucas unidades e quer avisar.", "evitar": "Não use 'acabe' como artifício. Só se for verdade."}, {"id": "ult-04", "abertura": "Restam poucas unidades de {peca}.", "detalhe": "{detalhe}. Preço {preco}.", "cta": "Me chama para saber se ainda tem.", "quando": "Você conferiu o estoque antes de postar.", "evitar": "Não diga 'poucas' se são muitas."}, {"id": "ult-05", "abertura": "Despedida de {peca}.", "detalhe": "{detalhe}. {preco} enquanto durar.", "cta": "Direct para ver as unidades restantes.", "quando": "A peça não volta mais.", "evitar": "Não use se a peça volta na próxima semana."}]}, {"id": "bastidores", "nome": "Bastidores", "legendas": [{"id": "bas-01", "abertura": "Como ficou a {peca}.", "detalhe": "{detalhe}. Preço {preco}.", "cta": "Quer ver de perto? Me chama no direct.", "quando": "Mostrar o resultado de um trabalho seu.", "evitar": "Não prometa prazo que você não cumpre."}, {"id": "bas-02", "abertura": "Escolhi esse acabamento para {peca}.", "detalhe": "{detalhe}.", "cta": "Valor {preco}. Detalhes no direct.", "quando": "Explicar uma decisão de feito à mão.", "evitar": "Não finja exclusividade se é peça de série."}, {"id": "bas-03", "abertura": "Nos bastidores: {peca} sendo separada.", "detalhe": "{detalhe}. Preço {preco}.", "cta": "Se quiser, me chama.", "quando": "Mostrar preparação real antes do envio.", "evitar": "Não use foto de estoque como se fosse sua."}, {"id": "bas-04", "abertura": "O que muda de uma peça para outra?", "detalhe": "{peca}: {detalhe}. Preço {preco}.", "cta": "Me chama para ver a peça que sobrou.", "quando": "Peças feitas à mão com variação real.", "evitar": "Não use variação para justificar cobrança maior."}, {"id": "bas-05", "abertura": "Feito à mão, com variação pequena no acabamento.", "detalhe": "{peca}: {detalhe}.", "cta": "Preço {preco}. Perguntas no direct.", "quando": "Quando a variação é real e você quer avisar.", "evitar": "Não use se a peça é industrializada."}]}, {"id": "pergunta", "nome": "Pergunta", "legendas": [{"id": "per-01", "abertura": "Qual cor você prefere para {peca}?", "detalhe": "{detalhe}. Preço {preco}.", "cta": "Responde aqui ou no direct.", "quando": "Você quer engajar antes de anunciar.", "evitar": "Não pergunte se não pretende ouvir a resposta."}, {"id": "per-02", "abertura": "Você usaria {peca} assim?", "detalhe": "{detalhe}. Valor {preco}.", "cta": "Me conta o que achou.", "quando": "Buscar opinião sobre uma peça nova.", "evitar": "Não use enquete se a decisão já está tomada."}, {"id": "per-03", "abertura": "Dúvida rápida: {peca} combina mais com look de dia ou de noite?", "detalhe": "{detalhe}. Preço {preco}.", "cta": "Direct se quiser ver outras fotos.", "quando": "Peça versátil com mais de uma foto.", "evitar": "Não use se você tem só uma imagem."}, {"id": "per-04", "abertura": "Pergunta honesta: {preco} faz sentido para {peca}?", "detalhe": "{detalhe}.", "cta": "Me diz o que você acha nos comentários.", "quando": "Você quer entender a percepção de preço.", "evitar": "Não faça se não aceitar crítica."}, {"id": "per-05", "abertura": "O que você quer ver na próxima postagem?", "detalhe": "Hoje tem {peca}: {detalhe}. Preço {preco}.", "cta": "Comenta ou chama no direct.", "quando": "Pauta colaborativa para o próximo post.", "evitar": "Não prometa conteúdo que não vai publicar."}]}]};
+const grupoEl = document.getElementById('grupo');
+const modeloEl = document.getElementById('modelo');
+const area = document.getElementById('texto-legenda');
+const regras = document.getElementById('regras');
+const contador = document.getElementById('contador');
+
+DADOS.grupos.forEach((g) => {
+  const o = document.createElement('option');
+  o.value = g.id;
+  o.textContent = g.nome;
+  grupoEl.appendChild(o);
+});
+
+function atualizarModelos() {
+  const grupo = DADOS.grupos.find(g => g.id === grupoEl.value) || DADOS.grupos[0];
+  modeloEl.innerHTML = '';
+  grupo.legendas.forEach((l, i) => {
+    const o = document.createElement('option');
+    o.value = l.id;
+    o.textContent = 'Modelo ' + (i + 1);
+    modeloEl.appendChild(o);
+  });
+  gerar();
+}
+
+function atual() {
+  const grupo = DADOS.grupos.find(g => g.id === grupoEl.value) || DADOS.grupos[0];
+  return grupo.legendas.find(l => l.id === modeloEl.value) || grupo.legendas[0];
+}
+
+function gerar() {
+  const l = atual();
+  const dados = {
+    '{peca}': document.getElementById('peca').value.trim(),
+    '{detalhe}': document.getElementById('detalhe').value.trim(),
+    '{preco}': document.getElementById('preco').value.trim()
+  };
+  let texto = [l.abertura, l.detalhe, l.cta].filter(Boolean).join('\n');
+  Object.keys(dados).forEach(k => { texto = texto.split(k).join(dados[k]); });
+  area.value = texto;
+  regras.innerHTML = '<strong>Quando usar:</strong> ' + l.quando.trim() +
+    '<br><strong>O que evitar:</strong> ' + l.evitar.trim();
+  const grupo = DADOS.grupos.find(g => g.id === grupoEl.value) || DADOS.grupos[0];
+  const pos = grupo.legendas.indexOf(l) + 1;
+  contador.textContent = 'Modelo ' + pos + ' de ' + grupo.legendas.length + ' · ' + grupo.nome;
+}
+
+grupoEl.addEventListener('change', atualizarModelos);
+modeloEl.addEventListener('change', gerar);
+['peca','detalhe','preco'].forEach(id => document.getElementById(id).addEventListener('input', gerar));
+document.getElementById('copiar').addEventListener('click', async () => {
+  const botao = document.getElementById('copiar');
+  try {
+    await navigator.clipboard.writeText(area.value);
+  } catch (e) {
+    area.select();
+    document.execCommand('copy');
+  }
+  botao.textContent = 'Copiado!';
+  setTimeout(() => { botao.textContent = 'Copiar legenda'; }, 1600);
+});
+atualizarModelos();
+</script>
+</body></html>
